@@ -10,7 +10,7 @@ MAINTAINER roberto innocente <inno@sissa.it>
 #
 # we replace the standard http://archive.ubuntu.com repository
 # that is very slow, with the new mirror method :
-#     deb mirror://mirror.ubuntu.com/mirrors.txt ...
+#     deb mirror://mirrors.ubuntu.com/mirrors.txt ...
 ADD  http://people.sissa.it/~inno/qe/sources.list /etc/apt/
 #
 # we update the package list 
@@ -28,7 +28,7 @@ RUN echo "export PATH=/home/qe:${PATH}" >>/home/qe/.bashrc
 # we move to /home/qe
 WORKDIR /home/qe
 #
-# we copy the 'qe' files and the needed shared libraries to /home/qe
+# we copy the 'qe' files and the needed shared libraries to /home/qe.
 # then we unpack them : the 'qe' directly there, the shared libs
 # from /
 RUN wget  http://people.sissa.it/~inno/qe/qe.tgz http://people.sissa.it/~inno/qe/sl-02.tgz && tar xvzf qe.tgz && tar xvzf sl-02.tgz -C /
@@ -41,15 +41,16 @@ RUN  rm qe.tgz sl-02.tgz
 RUN  wget http://people.sissa.it/~inno/qe/qe-logo.ascii && cp qe-logo.ascii /etc/update-motd.d/15-qe && chmod a+rx /etc/update-motd.d/15-qe && /usr/sbin/update-motd
 
 #
-# we remove remnants, chown to files in /home/qe, make pw.x executable, set 'qe' passwd
-RUN rm qe-logo.ascii && chown -R qe:qe /home/qe  && chmod a+x pw.x && (echo "qe:mammamia"|chpasswd)
-
+# we remove remnants, chown -R files in /home/qe, make pw.x executable, set 'qe' passwd
+RUN rm qe-logo.ascii && chown -R qe:qe /home/qe  && chmod a+x pw.x && (echo 'qe:mammamia'|chpasswd)
+#
+# we start sshd
 RUN service   ssh  restart 
 
 EXPOSE 22
 
 #
-# the container now be reached via ssh
+# the container can now be reached via ssh
 CMD [ "/usr/sbin/sshd","-D" ]
 
 
