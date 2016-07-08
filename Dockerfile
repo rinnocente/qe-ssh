@@ -16,7 +16,9 @@ ADD  http://people.sissa.it/~inno/qe/sources.list /etc/apt/
 # we update the package list 
 # and install openssh-server, sudo, wget, update-motd 
 # and run ssh-keygen -A to generate all possible keys for the host
-RUN apt update && apt install -y openssh-server sudo wget update-motd && ssh-keygen -A   
+RUN apt update \
+    && apt install -y openssh-server sudo wget update-motd \
+    && ssh-keygen -A   
 #
 # we create the user 'qe' and add it to the list of sudoers
 RUN  adduser -q --disabled-password --gecos qe qe
@@ -31,18 +33,25 @@ WORKDIR /home/qe
 # we copy the 'qe' files and the needed shared libraries to /home/qe.
 # then we unpack them : the 'qe' directly there, the shared libs
 # from /
-RUN wget  http://people.sissa.it/~inno/qe/qe.tgz http://people.sissa.it/~inno/qe/sl-02.tgz && tar xvzf qe.tgz && tar xvzf sl-02.tgz -C /
+RUN wget  http://people.sissa.it/~inno/qe/qe.tgz http://people.sissa.it/~inno/qe/sl-02.tgz \
+    && tar xvzf qe.tgz && tar xvzf sl-02.tgz -C /
 #
 # we remove the archives we copied
 RUN  rm qe.tgz sl-02.tgz 
 
 #
 # we copy an ascii art in the new motd way
-RUN  wget http://people.sissa.it/~inno/qe/qe-logo.ascii && cp qe-logo.ascii /etc/update-motd.d/15-qe && chmod a+rx /etc/update-motd.d/15-qe && /usr/sbin/update-motd
+RUN  wget http://people.sissa.it/~inno/qe/qe-logo.ascii \
+     && cp qe-logo.ascii /etc/update-motd.d/15-qe \
+     && chmod a+rx /etc/update-motd.d/15-qe \
+     && /usr/sbin/update-motd
 
 #
 # we remove remnants, chown -R files in /home/qe, make pw.x executable, set 'qe' passwd
-RUN rm qe-logo.ascii && chown -R qe:qe /home/qe  && chmod a+x pw.x && (echo 'qe:mammamia'|chpasswd)
+RUN rm qe-logo.ascii \
+    && chown -R qe:qe /home/qe  \
+    && chmod a+x pw.x \
+    && (echo 'qe:mammamia'|chpasswd)
 #
 # we start sshd
 RUN service   ssh  restart 
