@@ -5,6 +5,8 @@ Dockerfile for a Quantum Espresso container reachable trough ssh.
 
 **Quantum Espresso** is a widely used package for electronic structure calculations.
 
+Further information is  available on its website : [www.quantum-espresso.org](http://www.quantum-espresso.org/).
+
 This Dockerfile builds a container for **QE** that is reachable trough ssh.
 
 The image [rinnocente/qe-ssh](https://hub.docker.com/r/rinnocente/qe-ssh/) on dockerhub.com is created from this Dockerfile using :
