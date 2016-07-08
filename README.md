@@ -13,7 +13,8 @@ You can run the container in background  with :
 ```
   $ CONT_ID=`docker run -P -d -t qe-ssh`
 ```
-and access it with :
+in this way (-P) the std ssh port (=22) is mapped on a free port of the host.
+We can access the container discovering the port of the host on which the container ssh service is mapped :
 ```
   $ PORT=`docker port $CONT_ID|sed -e 's#.*:##'`
   $ ssh -p $PORT qe@127.0.0.1
