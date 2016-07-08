@@ -50,7 +50,8 @@ RUN service   ssh  restart
 EXPOSE 22
 
 #
-# the container can now be reached via ssh
+# the container can now be reached via ssh.
+# directly on the container port 22 or on the host mapped port.
 CMD [ "/usr/sbin/sshd","-D" ]
 
 
