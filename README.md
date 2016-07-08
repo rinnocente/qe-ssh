@@ -27,7 +27,7 @@ the 'qe' home directory.
 
 When you are inside the container you can run the test typing simply :
 ```
-  $ pw.x <result.in
+  $ pw.x <relax.in
 ```
 
 The normal way in which you use this container is sharing an input-output directory between your host 
