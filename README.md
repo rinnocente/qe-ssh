@@ -6,8 +6,9 @@ Dockerfile for a Quantum Espresso container reachable trough ssh
 This Dockerfile builds a container for **QE** that is reachable trough ssh.
 
 The image rinnocente/qe-ssh on dockerhub.com is created from this Dockerfile using :
+```
   $ docker build -t qe-ssh .
-
+```
 You can run the container in background  with :
 ```
   $ CONT_ID=`docker run -P -d -t qe-ssh`
