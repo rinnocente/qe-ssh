@@ -1,7 +1,7 @@
 # qe-ssh
 Dockerfile for a Quantum Espresso container reachable trough ssh.
 
-*(It is based on ubuntu:16.04 and its size is around ~250 MB, therefore when you pull it or run for the first time it will take some time depending on your internet connection)*
+*(The resulting image is based on ubuntu:16.04 and its size is around ~250 MB, therefore when you pull it or run for the first time it will take some time depending on your internet connection)*
 
 **Quantum Espresso** is a widely used package for electronic structure calculations.
 
