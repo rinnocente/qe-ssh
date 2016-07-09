@@ -45,7 +45,7 @@ and when you run the container you share this directory  with the container as a
  $ PORT=`docker port $CONT_ID|sed -e 's#.*:##'`
  $ ssh -p $PORT qe@127.0.0.1
 ```
-### NB. this container can be reached via ssh trough **your host $PORT** eventually from the Internet at large.
+### NB. this container can be reached via ssh trough **your host port $PORT** eventually from the Internet at large.
 
 ![qe](http://www.quantum-espresso.org/wp-content/uploads/2011/12/Quantum_espresso_logo.jpg)
 
