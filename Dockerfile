@@ -40,16 +40,8 @@ RUN wget  http://people.sissa.it/~inno/qe/qe.tgz http://people.sissa.it/~inno/qe
 RUN  rm qe.tgz sl-02.tgz 
 
 #
-# we copy an ascii art in the new motd way
-RUN  wget http://people.sissa.it/~inno/qe/qe-logo.ascii \
-     && cp qe-logo.ascii /etc/update-motd.d/15-qe \
-     && chmod a+rx /etc/update-motd.d/15-qe \
-     && /usr/sbin/update-motd
-
-#
-# we remove remnants, chown -R files in /home/qe, make pw.x executable, set 'qe' passwd
-RUN rm qe-logo.ascii \
-    && chown -R qe:qe /home/qe  \
+# we chown -R files in /home/qe, make pw.x executable, set 'qe' passwd
+RUN chown -R qe:qe /home/qe  \
     && chmod a+x pw.x \
     && (echo 'qe:mammamia'|chpasswd)
 #
