@@ -47,5 +47,25 @@ and when you run the container you share this directory  with the container as a
 ```
 ### NB. this container can be reached via ssh through **your host port $PORT** eventually from the Internet at large.
 
+---
+
+### The remaining binaries of the **QuantumEspresso** suite
+
+The complete set of binaries of the **QuantumEspresso** suite is large.
+There are 63 binaries, for an uncompressed total of ~360 MB.
+Therefore in the container there is only 1 test binary and 3 input files for a rapid test,
+otherwise the image would be over 0.5 GB.
+An easy download menu is provided that can
+download one binary at a time or all of them (but compressed ~ 130 MB).
+As you would expect, because it lives  in a docker container, this program is written in **golang**,
+and can be started typing :
+```
+$ dlmenu
+```
+Choosing ```a``` will download all binaries in the ```bin``` subdir.
+Choosing a number will download the respective binary in the ```bin``` subdir.
+Choosing ```q``` wil quit the downloader.
+
+
 ![qe](http://www.quantum-espresso.org/wp-content/uploads/2011/12/Quantum_espresso_logo.jpg)
 
