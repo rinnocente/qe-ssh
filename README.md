@@ -64,7 +64,7 @@ $ dlmenu
 ```
 Choosing ```a``` will download all binaries in the ```bin``` subdir.
 Choosing a number will download the respective binary in the ```bin``` subdir.
-Choosing ```q``` wil quit the downloader.
+Choosing ```q``` will quit the downloader.
 
 
 ![qe](http://www.quantum-espresso.org/wp-content/uploads/2011/12/Quantum_espresso_logo.jpg)
