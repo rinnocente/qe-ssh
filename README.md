@@ -7,7 +7,7 @@ Dockerfile for a Quantum Espresso ver 5.4.0 container reachable through ssh.
 
 Further information is  available on its website : [www.quantum-espresso.org](http://www.quantum-espresso.org/).
 
-This Dockerfile builds a container for **QE** that is reachable trough ssh.
+This Dockerfile builds a container for **QE** that is reachable through ssh.
 
 The image [rinnocente/qe-ssh](https://hub.docker.com/r/rinnocente/qe-ssh/) on dockerhub.com is created from this Dockerfile using :
 ```
