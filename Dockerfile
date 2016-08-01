@@ -29,7 +29,7 @@ WORKDIR /home/qe
 #
 RUN mkdir /home/qe/bin
 #
-# we add /home/qe to the PATH of user 'qe'
+# we add /home/qe/bin to the PATH of user 'qe'
 RUN echo "export PATH=/home/qe/bin:${PATH}" >>/home/qe/.bashrc
 ENV BASH_ENV .bashrc
 #
@@ -38,7 +38,6 @@ ENV BASH_ENV .bashrc
 # from /
 RUN wget  http://people.sissa.it/~inno/qe/qe.tgz \
           http://people.sissa.it/~inno/qe/sl-02.tgz \
-          http://people.sissa.it/~inno/qe/test-suite.tgz \
           http://people.sissa.it/~inno/qe/bin/dlmenu   \
 	&& chmod a+x dlmenu && mv dlmenu ./bin/
 #
