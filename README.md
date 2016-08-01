@@ -1,7 +1,7 @@
 # qe-ssh
 Dockerfile for a Quantum Espresso ver 5.4.0 container reachable through ssh.
 
-*(The resulting image is based on ubuntu:16.04 and its size is around ~250 MB, therefore when you pull it or run for the first time it will take some time depending on your internet connection)*
+*(The resulting image is based on ubuntu:16.04 and its size is around ~277 MB, therefore when you pull it or run for the first time it will take some time depending on your internet connection)*
 
 **Quantum Espresso** is a widely used package for electronic structure calculations.
 
@@ -27,7 +27,7 @@ the initial password for the 'qe' user is 'mammamia', don't forget to change it 
 
 The **QE** container has the QuantumEspresso executable (**pw.x**) , an input test file (**relax.in**)
 and 2 pseudopotential files necessary to run the test (**C.pz-rrkjus.UPF** and **O.pz-rrkjus.UPF**) inside
-the 'qe' home directory.
+the 'qe' home directory ('/home/qe').
 
 When you are inside the container you can run the test typing simply :
 ```
