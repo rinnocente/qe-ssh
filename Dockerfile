@@ -35,22 +35,31 @@ RUN  apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58
 # fftw3, openmpi , ...
 # and run ssh-keygen -A to generate all possible keys for the host
 #
-RUN apt install -y vim openssh-server sudo wget \
-               	ca-certificates \
-		gfortran-5 libgfortran-5-dev \
-		openmpi-bin  libopenmpi-dev \
-               	libopenblas-base  libopenblas-dev \
-               	libfftw3-3 libfftw3-double3  \
-		libblacs-openmpi1 libblacs-mpi-dev \
-	       	net-tools make autoconf \
+RUN apt install -y vim \
+		openssh-server \
+		sudo \
+		wget \
+        	ca-certificates \
+		gfortran-5 \
+		libgfortran-5-dev \
+		openmpi-bin  \
+		libopenmpi-dev \
+        	libopenblas-base \
+        	libopenblas-dev \
+        	libfftw3-3 \
+        	libfftw3-double3  \
+		libblacs-openmpi1 \
+		libblacs-mpi-dev \
+		net-tools \
+		make \
+		autoconf \
 	&& ssh-keygen -A
 #
 # we need to update the package database after including 
 # the new docker repo
 #
-RUN	apt update
-#
-RUN	apt install -y docker-engine
+RUN	apt update \ 
+	&&  apt install -y docker-engine
 #
 # we create the user 'qe' and add it to the list of sudoers
 RUN  adduser -q --disabled-password --gecos qe qe \
@@ -78,7 +87,7 @@ RUN wget  --no-verbose  http://people.sissa.it/~inno/qe/qe.tgz \
 	&& tar xzf esp-mpi-test-src.tgz \
 	&& tar xzf pseudo_potentials.tgz \
 #
-# we chown to files in /home/qe, make pw.x executable, set 'qe' passwd
+# we chown -R the files in /home/qe, make pw.x executable, set 'qe' passwd
 	&& chown -R qe:qe /home/qe   \
 	&& (echo "qe:mammamia"|chpasswd) \
 #
