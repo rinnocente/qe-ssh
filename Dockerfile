@@ -47,7 +47,7 @@ RUN  rm qe.tgz \
  	sl-02.tgz 
 #
 #
-# we chown to files in /home/qe, make pw.x executable, set 'qe' passwd
+# we chown -R the files in /home/qe, make pw.x executable, set 'qe' passwd
 RUN chown -R qe:qe /home/qe   \
 	&& chmod a+x pw.x && (echo "qe:mammamia"|chpasswd)
 
