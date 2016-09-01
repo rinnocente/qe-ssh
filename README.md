@@ -15,12 +15,12 @@ The image [rinnocente/qe-ssh](https://hub.docker.com/r/rinnocente/qe-ssh/) on do
 ```
 You can run the container in background  with :
 ```
-  $ CONT_ID=`docker run -P -d -t qe-ssh`
+  $ CONT=`docker run -P -d -t qe-ssh`
 ```
 in this way (-P) the std ssh port (=22) is mapped on a free port of the host.
 We can access the container discovering the port of the host on which the container ssh service is mapped :
 ```
-  $ PORT=`docker port $CONT_ID 22|sed -e 's#.*:##'`
+  $ PORT=`docker port $CONT 22|sed -e 's#.*:##'`
   $ ssh -p $PORT qe@127.0.0.1
 ```
 the initial password for the 'qe' user is 'mammamia', don't forget to change it immediately.
@@ -41,8 +41,8 @@ and the container. In this case you create a subdir in your host :
 ```
 and when you run the container you share this directory  with the container as a volume :
 ```
- $ CONT_ID=`docker run -v ~/qe-in-out:/home/qe/qe-in-out -P -d -t qe-ssh`
- $ PORT=`docker port $CONT_ID|sed -e 's#.*:##'`
+ $ CONT=`docker run -v ~/qe-in-out:/home/qe/qe-in-out -P -d -t qe-ssh`
+ $ PORT=`docker port $CONT|sed -e 's#.*:##'`
  $ ssh -p $PORT qe@127.0.0.1
 ```
 ### NB. this container can be reached via ssh through **your host port $PORT** eventually from the Internet at large.
